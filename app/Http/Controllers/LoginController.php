@@ -8,21 +8,20 @@ use App\Models\RegistrationModel;
 
 class LoginController extends Controller
 {
-    function onRegister(Request $request)
+    function onLogin(Request $request)
     {
 
         $username = $request->input('username');
         $password = $request->input('password');
-        $userCount = RegistrationModel::where('username', $username)->count();
+        $userCount = RegistrationModel::where(['username' => $username, 'password' => $password])->count();
+        return $userCount;
 
+    // if ($userCount != 0) {
 
-
-        if ($userCount != 0) {
-
-        }
-        else {
-            return 'User Not found';
-        }
+    // }
+    // else {
+    //     return 'User Not found';
+    // }
 
     }
 }
