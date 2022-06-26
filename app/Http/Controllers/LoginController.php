@@ -14,7 +14,12 @@ class LoginController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $userCount = RegistrationModel::where(['username' => $username, 'password' => $password])->count();
-        return $userCount;
+        if ($userCount == 1) {
+
+        }
+        else {
+            return "password or username is invalid";
+        }
 
     // if ($userCount != 0) {
 
